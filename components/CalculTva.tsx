@@ -3,7 +3,7 @@
 import React from "react"
 import { useFormInput } from "@/components/hooks/useFormInput"
 import { calculerTVA } from "@/components/helpers"
-import { ReusableForm } from "@/components/FormDisplay" // Adjust the import path as needed
+import { ReusableForm } from "@/components/FormDisplay"
 import ResultDisplay from "@/components/displayedResult"
 interface TVAValues {
   totalTTC: number

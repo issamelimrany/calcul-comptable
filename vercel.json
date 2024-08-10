@@ -1,0 +1,10 @@
+{
+    "redirects": [
+      {
+        "source": "/tva",
+        "destination": "https://digitalsquad.ma/tva",
+        "permanent": true
+      }
+    ]
+  }
+  
