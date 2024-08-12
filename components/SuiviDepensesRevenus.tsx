@@ -13,9 +13,10 @@ interface DecimalArrayInputProps {
   onDelete: (index: number) => void
   label: string
   addNewItem: () => void
+  disableDelete: boolean
 }
 
-const DecimalArrayInput = ({ values, onChange, onDelete, label, addNewItem }: DecimalArrayInputProps) => (
+const DecimalArrayInput = ({ values, onChange, onDelete, label, addNewItem, disableDelete }: DecimalArrayInputProps) => (
   <div className="mb-4">
     <label className="mb-2 block text-sm font-bold text-gray-700">{label}</label>
     {values.map((value, index) => (
@@ -32,6 +33,7 @@ const DecimalArrayInput = ({ values, onChange, onDelete, label, addNewItem }: De
           type="button"
           onClick={() => onDelete(index)}
           className="ml-2 text-red-500 hover:text-red-700 focus:outline-none"
+          disabled={disableDelete}
         >
           −
         </button>
@@ -65,6 +67,10 @@ const SuiviDepensesRevenus = () => {
   // Check if there is at least one value in both arrays
   const isFormValid = depenses.length > 0 && revenus.length > 0
 
+  // Disable the remove button if there are only two items in the respective array
+  const disableRemoveDepense = depenses.length <= 1
+  const disableRemoveRevenu = revenus.length <= 1
+
   return (
     <form className="mx-auto mb-4 max-w-lg rounded bg-white px-8 pb-8 pt-6 shadow-md">
       <h2 className="mb-6 text-2xl font-bold text-gray-800">Suivi des Dépenses et Revenus</h2>
@@ -74,6 +80,7 @@ const SuiviDepensesRevenus = () => {
         onDelete={removeDepense}
         label="Liste des Dépenses (MAD)"
         addNewItem={addDepense}
+        disableDelete={disableRemoveDepense}
       />
       <DecimalArrayInput
         values={revenus}
@@ -81,6 +88,7 @@ const SuiviDepensesRevenus = () => {
         onDelete={removeRevenu}
         label="Liste des Revenus (MAD)"
         addNewItem={addRevenu}
+        disableDelete={disableRemoveRevenu}
       />
       <div className="flex items-center justify-between">
         <Button
