@@ -34,6 +34,9 @@ const FormContainer: React.FC = () => {
         <div className="mx-auto max-w-3xl">
           <ActiveComponent />
         </div>
+        <div className="mx-auto max-w-3xl">
+          <ActiveComponent />
+        </div>
       </main>
     </div>
   )
